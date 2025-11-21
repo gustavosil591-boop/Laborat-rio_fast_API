@@ -19,12 +19,12 @@ class Aparelho(BaseModel):
     categoria: str
     deposito: str
 
-# Interface Transferível
+
 class Transferível:
     def transferir(self, novo_deposito):
         self.deposito = novo_deposito
 
-# Funções auxiliares para manipulação do XML
+
 def carregar_aparelhos_xml():
     try:
         tree = ET.parse(ARQUIVO)
@@ -61,7 +61,7 @@ def salvar_aparelhos_xml(aparelhos):
     tree = ET.ElementTree(root)
     tree.write(ARQUIVO, encoding="utf-8", xml_declaration=True)
 
-# Endpoints
+
 @app.post("/aparelhos", status_code=201)
 def adicionar_aparelho(aparelho: Aparelho):
     aparelhos = carregar_aparelhos_xml()
